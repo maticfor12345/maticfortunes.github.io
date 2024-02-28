@@ -1,0 +1,75 @@
+function i(a, b, c) {
+    b <= a ? (
+        $("#x3_level" + b + "_stats").removeClass("hide"),
+        $("#x3_level" + b + "_buy").removeClass("hide"),
+        $("#x3_level" + b + "_buy").addClass("hide"),
+        $("#x3_level" + b + "_matrix").removeClass("disabled2"),
+        $("#x3_level" + b).removeClass("disabled"),
+        D.methods.usersX3Matrix(O, b).call(function (d, e) {
+            !0 == e[2] && (
+                $("#x3_level" + b).addClass("disabled"),
+                C("Level " + b + " is blocked for further partner payments until you upgrade to the next level!", "Upgrade needed", 1e4)
+            ),
+            m(function () {
+                h(e, 0, b, a, c);
+            });
+        })
+    ) : (
+        $("#x3_level" + b + "_stats").removeClass("hide"),
+        $("#x3_level" + b + "_stats").addClass("hide"),
+        $("#x3_level" + b + "_buy").removeClass("hide"),
+        $("#x3_level" + b + "_matrix").removeClass("disabled2"),
+        $("#x3_level" + b + "_matrix").addClass("disabled2"),
+        $("#x3_level" + b).removeClass("disabled"),
+        b > a + 1 ? (
+            $("#x3_level" + b).removeClass("disabled"),
+            $("#x3_level" + b).addClass("disabled")
+        ) : (
+            $("#x3_level" + b + "_matrix").removeClass("disabled2"),
+            13 > b && m(function () {
+                i(a, b + 1, c);
+            })
+        )
+    );
+}
+
+function l(a, b) {
+    b <= a ? (
+        $("#x6_level" + b + "_stats").removeClass("hide"),
+        $("#x6_level" + b + "_buy").removeClass("hide"),
+        $("#x6_level" + b + "_buy").addClass("hide"),
+        $("#x6_level" + b + "_matrix").removeClass("disabled2"),
+        $("#x6_level" + b).removeClass("disabled"),
+        D.methods.usersX6Matrix(O, b).call(function (c, d) {
+            !0 == d[3] && (
+                $("#x6_level" + b).addClass("disabled"),
+                C("Level " + b + " is blocked for further partner payments until you upgrade to the next level!", "Upgrade needed", 1e4)
+            ),
+            m(function () {
+                D.methods.users(d[0]).call(function (c, e) {
+                    c || (
+                        $("#x6_level" + b + "_referrer").html(e.id.toString()),
+                        $("#x6_level" + b + "_referrer").attr("title", "Current Referrer ID:" + e.id.toString() + ", Addr: " + q(d[0])),
+                        j(d, 0, b, a)
+                    );
+                });
+            });
+        })
+    ) : (
+        $("#x6_level" + b + "_stats").removeClass("hide"),
+        $("#x6_level" + b + "_stats").addClass("hide"),
+        $("#x6_level" + b + "_buy").removeClass("hide"),
+        $("#x6_level" + b + "_matrix").removeClass("disabled2"),
+        $("#x6_level" + b + "_matrix").addClass("disabled2"),
+        $("#x6_level" + b).removeClass("disabled"),
+        b > a + 1 ? (
+            $("#x6_level" + b).removeClass("disabled"),
+            $("#x6_level" + b).addClass("disabled")
+        ) : (
+            $("#x6_level" + b + "_matrix").removeClass("disabled2"),
+            12 > b && m(function () {
+                l(a, b + 1);
+            })
+        )
+    );
+}
